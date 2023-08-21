@@ -70,11 +70,13 @@ const Table = () => {
           header='Actions'
           body={(rowData) => (
             <div className='flex justify-center items-center gap-3'>
-              <Button
-                label='View'
-                severity='success'
-                onClick={() => navigation(`/product/${rowData.id}`)}
-              />
+              {rowData.id && (
+                <Button
+                  label='View'
+                  severity='success'
+                  onClick={() => navigation(`/product/${rowData.id}`)}
+                />
+              )}
               <Button label='Edit' severity='warning' />
               <Button
                 label='Delete'
