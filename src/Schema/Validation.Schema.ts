@@ -34,3 +34,10 @@ export const RegisterSchema = z.object({
     .min(8, { message: 'rePassword must be atleast 8 char' })
     .nonempty({ message: 'rePassword is required' }),
 });
+
+export const AddProductSchema = z.object({
+  title: z.string().nonempty({ message: 'title is required' }),
+  description: z.string().nonempty({ message: 'description is required' }),
+  price: z.string().nonempty({ message: 'description is required' }),
+  brand: z.string().nonempty({ message: 'brand is required' }),
+});

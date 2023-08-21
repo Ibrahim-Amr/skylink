@@ -5,31 +5,25 @@ import { Column } from 'primereact/column';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Paginator } from 'primereact/paginator';
-interface Country {
-  name: string;
-  code: string;
-}
+import toast from 'react-hot-toast';
+import AddProductModal from './AddProduct/AddProductModal';
 
-interface Representative {
-  name: string;
-  code: string;
-}
-
-interface Customer {
+export interface ProductType {
   id: number;
-  name: string;
-  country: Country;
-  company: string;
-  date: string;
-  status: string;
-  verified: boolean;
-  activity: number;
-  representative: Representative;
-  balance: number;
+  title: string;
+  description: string;
+  price: number;
+  discountPercentage: number;
+  rating: number;
+  stock: number;
+  brand: string;
+  category: string;
+  thumbnail: string;
+  images: string[];
 }
 
 const Table = () => {
-  const [products, setProducts] = useState<Customer[]>([]);
+  const [products, setProducts] = useState<ProductType[]>([]);
   const [currentPage, setCurrentPage] = useState(0);
   const navigation = useNavigate();
 
@@ -49,11 +43,13 @@ const Table = () => {
       const filteredData = products.filter((product) => product.id != id);
       console.log(filteredData);
       setProducts(filteredData);
+      toast.success('deleted successfully');
     }
   };
 
   return (
     <div className='card overflow-y-scroll'>
+      <AddProductModal setProducts={setProducts} />
       <DataTable
         value={products}
         rows={5}
@@ -61,14 +57,14 @@ const Table = () => {
         tableStyle={{ minWidth: '50rem' }}
         className='!min-w-[1400px]'
       >
-        <Column field='title' header='title' style={{ width: '25%' }}></Column>
+        <Column field='title' header='Title' style={{ width: '25%' }}></Column>
         <Column
           field='description'
           header='description'
           style={{ width: '25%' }}
         ></Column>
-        <Column field='price' header='price' style={{ width: '25%' }}></Column>
-        <Column field='brand' header='brand' style={{ width: '25%' }}></Column>
+        <Column field='price' header='Price' style={{ width: '25%' }}></Column>
+        <Column field='brand' header='Brand' style={{ width: '25%' }}></Column>
         <Column
           field='Actions'
           header='Actions'
