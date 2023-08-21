@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { Paginator } from 'primereact/paginator';
 import toast from 'react-hot-toast';
 import AddProductModal from './AddProduct/AddProductModal';
+import { InputText } from 'primereact/inputtext';
 
 export interface ProductType {
   id: number;
@@ -25,6 +26,8 @@ export interface ProductType {
 const Table = () => {
   const [products, setProducts] = useState<ProductType[]>([]);
   const [currentPage, setCurrentPage] = useState(0);
+  const [globalFilter, setGlobalFilter] = useState('');
+
   const navigation = useNavigate();
 
   const fetchProducts = useCallback(async () => {
@@ -49,13 +52,22 @@ const Table = () => {
 
   return (
     <div className='card overflow-y-scroll'>
-      <AddProductModal setProducts={setProducts} />
+      <div className='flex flex-row-reverse justify-center items-center gap-x-10 p-5'>
+        <AddProductModal setProducts={setProducts} />
+        <InputText
+          className='w-full'
+          onChange={(e) => {
+            setGlobalFilter(e.target.value);
+          }}
+        />
+      </div>
       <DataTable
         value={products}
         rows={5}
         rowsPerPageOptions={[5, 10]}
         tableStyle={{ minWidth: '50rem' }}
         className='!min-w-[1400px]'
+        globalFilter={globalFilter}
       >
         <Column
           field='title'

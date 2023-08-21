@@ -11,12 +11,13 @@ const AddProductModal = ({
 }) => {
   const [openModal, setOpenModal] = useState<boolean>(false);
   return (
-    <div className='flex justify-end items-center p-5 '>
+    <div className='flex justify-end items-center'>
       <Button
-        label='Add Product'
-        icon='pi pi-external-link'
+        label='Add'
+        size='small'
         severity='success'
         onClick={() => setOpenModal(true)}
+        className='!w-full'
       />
       <Dialog
         header='Add Product'
