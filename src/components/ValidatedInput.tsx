@@ -2,28 +2,36 @@ import { InputText } from 'primereact/inputtext';
 import { UseFormRegister, FieldErrors } from 'react-hook-form';
 
 interface Props {
-  id: 'email' | 'password';
+  id: 'name' | 'email' | 'password' | 'rePassword' | 'phone';
   placeholder: string;
+  type?: string;
   register: UseFormRegister<{
+    name: string;
     email: string;
     password: string;
+    rePassword: string;
+    phone: string;
   }>;
   errors: FieldErrors<{
+    name?: string;
     email: string;
     password: string;
+    rePassword?: string;
+    phone?: string;
   }>;
 }
 
 const ValidatedInput: React.FC<Props> = ({
   id,
   placeholder,
+  type,
   register,
   errors,
 }) => {
   return (
     <div className='w-full'>
       <InputText
-        type='text'
+        type={type}
         id={id}
         placeholder={placeholder}
         {...register(id)}

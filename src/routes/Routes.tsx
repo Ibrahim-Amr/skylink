@@ -4,6 +4,7 @@ import ProductDetails from '../pages/ProductDetails';
 import LayOut from '../components/layout/LayOut';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
+import { RequireAuth } from 'react-auth-kit';
 
 const routes = createBrowserRouter([
   {
@@ -12,7 +13,11 @@ const routes = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />,
+        element: (
+          <RequireAuth loginPath='/login'>
+            <Home />
+          </RequireAuth>
+        ),
       },
       {
         path: '/login',
@@ -24,7 +29,11 @@ const routes = createBrowserRouter([
       },
       {
         path: '/product/:id',
-        element: <ProductDetails />,
+        element: (
+          <RequireAuth loginPath='/login'>
+            <ProductDetails />
+          </RequireAuth>
+        ),
       },
     ],
   },

@@ -25,7 +25,10 @@ const SideNav = () => {
       <div>
         <ul className='space-y-4 '>
           {navLinks.map((link) => (
-            <li className='font-semibold text-3xl hover:opacity-75 transition-all ease-in-out '>
+            <li
+              key={link.label}
+              className='font-semibold text-3xl hover:opacity-75 transition-all ease-in-out '
+            >
               <NavLink to={link.href} title={link.label}>
                 {link.label}
               </NavLink>
