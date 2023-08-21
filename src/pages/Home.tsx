@@ -1,8 +1,6 @@
 import Table from '../components/DataTable';
 
-type Props = {};
-
-const Home = (props: Props) => {
+const Home = () => {
   return (
     <section className='py-20'>
       <Table />

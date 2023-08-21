@@ -4,11 +4,12 @@ import { useForm } from 'react-hook-form';
 import { LoginSchema } from '../Schema/Validation.Schema';
 import * as z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import ValidatedInput from '../components/ValidatedInput';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useSignIn } from 'react-auth-kit';
 import { useNavigate } from 'react-router-dom';
+import LoginInput from '../components/Login/LoginInput';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const {
@@ -56,13 +57,13 @@ const Login = () => {
           onSubmit={handleSubmit(onSubmit)}
           className='flex flex-col justify-center items-center gap-5 w-full'
         >
-          <ValidatedInput
+          <LoginInput
             id='email'
             placeholder='example@email.com'
             register={register}
             errors={errors}
           />
-          <ValidatedInput
+          <LoginInput
             placeholder='*** *** *** ***'
             id='password'
             register={register}
@@ -75,6 +76,12 @@ const Login = () => {
             title='Login'
           />
         </form>
+        <p className='font-medium'>
+          Already have an account?{' '}
+          <Link to='/register' className='text-blue-600 hover:underline'>
+            Register
+          </Link>
+        </p>
       </Card>
     </div>
   );

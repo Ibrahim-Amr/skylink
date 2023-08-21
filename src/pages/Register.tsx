@@ -4,11 +4,12 @@ import { useForm } from 'react-hook-form';
 import { RegisterSchema } from '../Schema/Validation.Schema';
 import * as z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import ValidatedInput from '../components/ValidatedInput';
+import RegisterInput from '../components/RegisterInput';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useSignIn } from 'react-auth-kit';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
   const {
@@ -61,33 +62,33 @@ const Register = () => {
           onSubmit={handleSubmit(onSubmit)}
           className='flex flex-col justify-center items-center gap-5 w-full'
         >
-          <ValidatedInput
+          <RegisterInput
             id='name'
             placeholder='user name'
             register={register}
             errors={errors}
           />
-          <ValidatedInput
+          <RegisterInput
             id='email'
             placeholder='example@email.com'
             register={register}
             errors={errors}
           />
-          <ValidatedInput
+          <RegisterInput
             placeholder='password'
             id='password'
             type='password'
             register={register}
             errors={errors}
           />
-          <ValidatedInput
+          <RegisterInput
             placeholder='Repassword'
             id='rePassword'
             type='password'
             register={register}
             errors={errors}
           />
-          <ValidatedInput
+          <RegisterInput
             placeholder='+20 000 0000 000'
             id='phone'
             register={register}
@@ -99,6 +100,12 @@ const Register = () => {
             title='Register'
           />
         </form>
+        <p className='font-medium'>
+          Already have an account?{' '}
+          <Link to='/login' className='text-blue-600 hover:underline'>
+            Login
+          </Link>
+        </p>
       </Card>
     </div>
   );

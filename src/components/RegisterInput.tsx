@@ -13,15 +13,15 @@ interface Props {
     phone: string;
   }>;
   errors: FieldErrors<{
-    name?: string;
+    name: string;
     email: string;
     password: string;
-    rePassword?: string;
-    phone?: string;
+    rePassword: string;
+    phone: string;
   }>;
 }
 
-const ValidatedInput: React.FC<Props> = ({
+const RegisterInput: React.FC<Props> = ({
   id,
   placeholder,
   type,
@@ -49,4 +49,4 @@ const ValidatedInput: React.FC<Props> = ({
   );
 };
 
-export default ValidatedInput;
+export default RegisterInput;
