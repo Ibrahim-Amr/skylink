@@ -57,14 +57,30 @@ const Table = () => {
         tableStyle={{ minWidth: '50rem' }}
         className='!min-w-[1400px]'
       >
-        <Column field='title' header='Title' style={{ width: '25%' }}></Column>
+        <Column
+          field='title'
+          header='Title'
+          style={{ width: '25%' }}
+          sortable
+        ></Column>
         <Column
           field='description'
           header='description'
           style={{ width: '25%' }}
+          sortable
         ></Column>
-        <Column field='price' header='Price' style={{ width: '25%' }}></Column>
-        <Column field='brand' header='Brand' style={{ width: '25%' }}></Column>
+        <Column
+          field='price'
+          header='Price'
+          style={{ width: '25%' }}
+          sortable
+        ></Column>
+        <Column
+          field='brand'
+          header='Brand'
+          style={{ width: '25%' }}
+          sortable
+        ></Column>
         <Column
           field='Actions'
           header='Actions'
