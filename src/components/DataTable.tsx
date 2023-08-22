@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useContext } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Button } from 'primereact/button';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
@@ -8,7 +8,6 @@ import { Paginator } from 'primereact/paginator';
 import toast from 'react-hot-toast';
 import AddProductModal from './AddProduct/AddProductModal';
 import { InputText } from 'primereact/inputtext';
-import GlobalContext from '../context/global.context';
 import EditProduct from './EditProduct/EditProduct';
 
 export interface ProductType {
