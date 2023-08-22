@@ -5,7 +5,7 @@ const ProductDetails = () => {
   const { id } = useParams();
 
   const { isLoading, error, data } = useQuery({
-    queryKey: ['product'],
+    queryKey: ['product', id],
     queryFn: async () => {
       const response = await axios.get(`https://dummyjson.com/products/${id}`);
       return response.data;

@@ -68,6 +68,8 @@ const Table = () => {
         tableStyle={{ minWidth: '50rem' }}
         className='!min-w-[1400px]'
         globalFilter={globalFilter}
+        stripedRows
+        removableSort
       >
         <Column
           field='title'

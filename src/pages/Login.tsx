@@ -37,7 +37,7 @@ const Login = () => {
         authState: response.user,
         expiresIn: 60,
       });
-      toast.success(response.message);
+      toast.success(response.message + `Welcome, ${response.user.name}`);
       reset();
       navigaction('/');
     } catch (err: any) {

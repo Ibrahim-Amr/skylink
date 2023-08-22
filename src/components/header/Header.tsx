@@ -24,14 +24,13 @@ const Header = () => {
             <h1 className='font-bold text-4xl tracking-tighter'>Skylink</h1>
           </Link>
         </div>
-        <div className='flex justify-center items-center gap-x-3'>
-          <p className='font-medium'>Welcome, {auth()?.name}</p>
+        <div>
           {auth() && (
             <Button
               label='LogOut'
               severity='danger'
               text
-              className='!text-xl'
+              size='small'
               onClick={() => signOut()}
             />
           )}

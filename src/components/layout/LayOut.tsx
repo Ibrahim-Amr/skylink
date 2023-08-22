@@ -20,7 +20,7 @@ const LayOut = () => {
           <GlobalContextProvider>
             <Header />
             <SideNav />
-            <Outlet></Outlet>
+            <Outlet />
             <Toaster />
           </GlobalContextProvider>
         </AuthProvider>

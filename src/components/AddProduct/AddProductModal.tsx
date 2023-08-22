@@ -14,10 +14,9 @@ const AddProductModal = ({
     <div className='flex justify-end items-center'>
       <Button
         label='Add'
-        size='small'
         severity='success'
         onClick={() => setOpenModal(true)}
-        className='!w-full'
+        className='!w-full !px-20'
       />
       <Dialog
         header='Add Product'
