@@ -13,7 +13,11 @@ export const GlobalContextProvider = ({
   children: ReactNode;
 }) => {
   const [sideNav, setSideNav] = useState<boolean>(false);
-  const contextValues: ContextValues = { sideNav, setSideNav };
+
+  const contextValues: ContextValues = {
+    sideNav,
+    setSideNav,
+  };
 
   return (
     <GlobalContext.Provider value={contextValues}>

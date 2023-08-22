@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useContext } from 'react';
 import { Button } from 'primereact/button';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
@@ -8,6 +8,8 @@ import { Paginator } from 'primereact/paginator';
 import toast from 'react-hot-toast';
 import AddProductModal from './AddProduct/AddProductModal';
 import { InputText } from 'primereact/inputtext';
+import GlobalContext from '../context/global.context';
+import EditProduct from './EditProduct/EditProduct';
 
 export interface ProductType {
   id: number;
@@ -79,7 +81,7 @@ const Table = () => {
         ></Column>
         <Column
           field='description'
-          header='description'
+          header='Description'
           style={{ width: '25%' }}
           sortable
         ></Column>
@@ -107,7 +109,13 @@ const Table = () => {
                   onClick={() => navigation(`/product/${rowData.id}`)}
                 />
               )}
-              <Button label='Edit' severity='warning' />
+              <Button
+                label='Edit'
+                severity='warning'
+                onClick={() => {
+                  navigation(`/?productId=${rowData.id}&edit=true`);
+                }}
+              />
               <Button
                 label='Delete'
                 severity='danger'
@@ -123,6 +131,7 @@ const Table = () => {
         totalRecords={100}
         onPageChange={(e) => setCurrentPage(e.page)}
       />
+      <EditProduct setProducts={setProducts} />
     </div>
   );
 };
